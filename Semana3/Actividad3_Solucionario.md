@@ -54,7 +54,7 @@ Cambios de punteros:
 - reverse(): Se usan tres punteros: prev = null, curr = head, y en cada paso se guarda next = curr->next. Luego se invierte el enlace (curr->next = prev), se avanza (prev = curr, curr = next). Al final, head pasa a ser el antiguo tail. No requiere estructura auxiliar porque solo reorienta punteros existentes.
 - checkSize(): Recorre la lista contando nodos reales y compara ese conteo con n. Verifica el invariante de tamaño; si no coincide, hay inconsistencia estructural. Es clave para defender correctitud porque detecta errores silenciosos en inserciones/eliminaciones.
 
-Problemas 5 - 9 DLList
+Problemas 6 - 9 DLList
 - getNode(i): Puede iniciar desde head o tail porque hay enlaces dobles (next y prev). Se elige el extremo más cercano a i, reduciendo el recorrido a O(min(i, n−i)).
 - addBefore(w):
 - Si w es el nodo de referencia, se actualizan cuatro enlaces:
