@@ -126,7 +126,7 @@ Es un trade-off entre tiempo de acceso, costo de actualización y uso de espacio
 ### BLOQUE 8
 
 1. Cambio de arquitectura: Se evoluciona de bloques de memoria juntos (arreglos) a nodos conectados por referencias; la información ya no está en un solo sitio, sino distribuida en la memoria.
-2. Limitación de acceso: Mientras que en los arreglos llegas a cualquier dato al instante ($O(1)$), en las listas debes recorrer los nodos uno por uno ($O(n)$), perdiendo el acceso directo eficiente.
-3. Ventaja en modificaciones: Insertar o borrar en arreglos es lento porque hay que mover elementos; en listas, estas operaciones son casi instantáneas ($O(1)$) porque solo necesitas cambiar hacia dónde apuntan los enlaces.
+2. Limitación de acceso: Mientras que en los arreglos llegas a cualquier dato al instante (O(1)), en las listas debes recorrer los nodos uno por uno (O(n)), perdiendo el acceso directo eficiente.
+3. Ventaja en modificaciones: Insertar o borrar en arreglos es lento porque hay que mover elementos; en listas, estas operaciones son casi instantáneas (O(1)) porque solo necesitas cambiar hacia dónde apuntan los enlaces.
 4. Variedades de listas:SLList (Simple): Rápida en los extremos, pero solo se mueve en una dirección.  DLList (Doble): Más flexible al permitir ir hacia adelante y hacia atrás mediante dos enlaces por nodo.  SEList: Un híbrido que agrupa elementos en pequeños bloques para equilibrar la velocidad de los arreglos con la flexibilidad de las listas.
 5. Estructuras como adaptadores: Las listas sirven como "motor" interno para construir otras herramientas como Stacks o Queues, permitiendo crear nuevas funciones sin tener que programar la lógica base desde cero.  Contiguo vs. Enlazado: La memoria contigua es mejor para la velocidad del procesador (caché), mientras que la memoria enlazada es superior cuando necesitas modificar la estructura constantemente sin mover grandes cantidades de datos.  
