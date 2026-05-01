@@ -1,11 +1,14 @@
 ### Bloque 1
-
+1. Cuando una estructura pasa de almacenamiento contiguo a dinámico, deja de depender de un bloque único de memoria y usa nodos conectados por referencias. Esto le da flexibilidad para crecer sin mover todo, pero pierde eficiencia en acceso y localidad de memoria.
+2. Acceso por rango (contiguo) significa poder saltar directamente a cualquier índice en O(1). Acceso por posición o enlace implica recorrer nodo a nodo hasta llegar al elemento, lo que cuesta O(n).
 3. Para la listas enlazadas, no se exige seguir el orden lógico de secuencias, sino se enfoca más al acceso por referencia, lo cual lo haze menos eficiente para recuperar directamente el elemento de una posición arbitraria. 
-
+4. SLList implementa bien Stack y Queue porque permite insertar y eliminar en el inicio (head) y también mantener el final (tail), logrando operaciones O(1) para push/pop y enqueue/dequeue.
+5. SLList no implementa bien Deque porque no tiene punteros hacia atrás; eliminar o insertar al final (o antes del último) requiere recorrer la lista, aumentando el costo.
 6. El nodo dummy ayuda de que la función next y prev siempre existan, trabaja como una constante que nos permite guiar hacia la cabeza o cola de la lista.
 7. Porque usan la función *GetNode* con la cual hace una busqueda segun la distancia entre sus extremos.
 8. La idea es central es: reducir el desperdicio de espacio y mejora la localización por bloques, pero lo hace a costa de una implementación más compleja y de un análisis amortizado más sofisticado.
-9. 
+9. SEList reutiliza una BDeque basada en ArrayDeque porque necesita bloques eficientes en acceso y movimiento interno; el arreglo permite manejar bien datos dentro de cada bloque.
+10. DengList actúa como una capa de abstracción más rica que permite aplicar algoritmos (ordenar, deduplicar, etc.) sin modificar las estructuras base. No las reemplaza porque no optimiza la representación interna ni sus costos, solo facilita reutilización.
 
 ---
 
