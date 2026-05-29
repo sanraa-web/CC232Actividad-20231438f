@@ -4,6 +4,8 @@ Una apliacion leve del bst de la semana anterior ahora con las rotaciones, compa
 ## 2.
 Conjunto de headers, PQ (interfaz) y sus variantes (leftheap, huffman, treap, vectorheapsort).
 
+## 3.
+Capitulo6.h se usara para la semana10 por lo que es mas práctico referenciarlo.
 ## 4.
 Es una continuacion del uso de los modelos arboles binarios.
 
@@ -11,7 +13,9 @@ Es una continuacion del uso de los modelos arboles binarios.
 PQ_ComplHeap.h
 ## 6.
 PQ_LeftHeap.h
-
+## 7.
+Treap.h
+## 8.
 
 Comandos usados
 cmake -S . -B build
