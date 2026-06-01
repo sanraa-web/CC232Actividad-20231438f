@@ -74,7 +74,7 @@ std::size_t complHeapPercolateDownCount(std::vector<T>& a, std::size_t n, std::s
   return i;
 }
 ```
-Solamente se modifica la funcion complHeapPercolateDown() agregando la variable count que aumenta despues de cada swap(), luego se returna como un cout, ya que el header de huffman utiliza el return i y esto dañaria el header Capitulo6.h.
+Solamente se modifica la funcion complHeapPercolateDown() agregando la variable count que aumenta despues de cada swap(), luego se returna como un cout, ya que el header Huffman_PQ.h utiliza la variable del maximo y esto dañaria el header Capitulo6.h.
 
 Dentro de PQ_ComplHeap_delMax.h
 ```cpp
