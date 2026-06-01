@@ -17,6 +17,7 @@ PQ_LeftHeap.h
 Treap.h
 ## 8.
 
+
 Comandos usados
 cmake -S . -B build
 cmake --build build
@@ -33,17 +34,23 @@ inline constexpr bool pqIsLeaf(std::size_t i, std::size_t n) noexcept {
   return (!pqHasLeftChild(i, n) && !pqHasRightChild(i, n));
 }
 inline constexpr bool pqIsInternal(std::size_t i, std::size_t n) noexcept {
-  return ((pqHasLeftChild(i, n) || pqHasRightChild(i, n)));
+  return (pqHasParent(i) && (pqHasLeftChild(i, n) || pqHasRightChild(i, n)));
 }
 ```
 Para las dos primera funciones: Si la supuesta ubicacion de los hijos esta por fuera del tamaño de n, entonces no existe.
 Para pqisleaf es un bool donde para verificar si es una hoja no debe tener ni hijo izquierdo ni hijo derecho.
-Para pqisinternal 
 
 ## 1.
-Para la 
+Para englobar las operaciones que luego se heredan para los demas (la funcion aritmetica).
 ## 2.
-Estaría mas optimizado para las funciones que no tiene excepciones, haciendolo mas rapido al compilar
+Contexpr es optmimizado para el uso en PQ_ComplHeap_macro, donde no hay casos adicionales, no tiene riesgos de una magro.
 ## 3.
+El nodo tiene un único hijo posible left, así que siftDown debe comparar solo con ese hijo en vez de elegir el menor de dos.
+## 4.
+Un nodo es hoja si left(i) >= size, en otras palabas, si cae fuera del rango del arreglo.
+## 5.
+
+
+# BLOQUE 3
 
 
