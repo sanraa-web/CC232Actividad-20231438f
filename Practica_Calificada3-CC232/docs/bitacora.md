@@ -1,2 +1,11 @@
-**06-06-2026**
+#
+
+## 06-06-2026
+
 Se completo el formato de los elementos necesarios para el repositorio, al leer el problema se observa la ncesidad de una estrucutra de datos mas avanzada que un vector por la operacion de tipo 2 en particular, considerando que el rango de Q es de hasta 200,000 se concluye que la complegidad temporal de mis algoritmos debe ser necesariamente menor a $Q^2$. Mas adelante tengo planeado mostrar dicha demo del caso ingenuo e iniciar la creacion de los headers que deberan tener que ven con arboles por como me sugieren en el repositorio de problemas, como tambien que son las estructuras estudiadas que a primera vista (por el costo de las operaciones) son ideales en este caso.
+
+## 07-06-2026
+
+Se creó la demo con la solución ingenua; dicha solución usa el formato de código común de la programación competitiva, incluyendo `ios_base::sync_with_stdio(false)` para desincronizar los streams de C++ con C, y `cin.tie(nullptr)` para evitar que los `cout` hagan *flush* antes de leer con `cin`. Como era de esperarse, ocurrió un TLE al pasarlo por el juez virtual. Esto refuerza la idea de ayer de usar una estructura de datos más potente; se pasará ahora a crear el header.
+
+En `treap.h` es una recuperación del header `Treap.h`, pero solo utiliza como funciones públicas `add()` y `remove()`, mientras que las demás utilidades necesarias para un *treap* se movieron al ámbito privado. La implementación del `kth` se realizará más adelante, lo cual servirá como distinción necesaria entre el modelo hecho en clase y la nueva aplicación para este problema.
