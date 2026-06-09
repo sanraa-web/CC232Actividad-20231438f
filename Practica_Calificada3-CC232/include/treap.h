@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <functional>
 #include <random>
+#include <stdexcept>
 #include <utility>
 
 namespace ods {
@@ -16,6 +17,8 @@ class Treap {
     Node* parent{nullptr};
     Node* left{nullptr};
     Node* right{nullptr};
+    std::size_t subtreeSize{1};
+
 
     Node() = default;
     Node(const T& value, std::uint64_t p, Node* par = nullptr)
@@ -79,6 +82,23 @@ class Treap {
     return true;
   }
 
+  const T& kth(std::size_t k) const {
+    Node* u = root_;
+    while (u) {
+      std::size_t leftSize = sz(u->left);
+      std::size_t rank     = leftSize + 1;
+
+      if (k == rank) {
+        return u->key;
+      } else if (k < rank) {
+        u = u->left;
+      } else {
+        k -= rank;
+        u = u->right;
+      }
+    }
+  }
+
  private:
   Node* root_{nullptr};
   std::size_t size_{0};
@@ -86,9 +106,17 @@ class Treap {
   std::mt19937_64 rng_;
   std::uint64_t priorityCounter_{0};
 
+  static std::size_t sz(const Node* u) noexcept {
+    return u ? u->subtreeSize : 0;
+  }
+
   std::uint64_t nextPriority() {
     std::uint64_t raw = rng_();
     return (raw << 16) ^ (++priorityCounter_);
+  }
+
+  static void updateSize(Node* u) noexcept {
+    if (u) u->subtreeSize = 1 + sz(u->left) + sz(u->right);
   }
 
   Node* findLast(const T& x) const {
@@ -122,8 +150,8 @@ class Treap {
   }
 
   bool addNode(Node* u) {
-    u->left = nullptr;
-    u->right = nullptr;
+    u->left = u->right = nullptr;
+    u->subtreeSize = 1;
     Node* p = findLast(u->key);
     if (!p) {
       root_ = u;
@@ -142,6 +170,8 @@ class Treap {
     }
     u->parent = p;
     ++size_;
+    for (Node* anc = p; anc; anc = anc->parent) 
+      updateSize(anc);
     return true;
   }
 
@@ -155,6 +185,8 @@ class Treap {
       u->parent->right = s;
     }
     if (s) s->parent = u->parent;
+    for (Node* anc = u->parent; anc; anc = anc->parent) 
+      updateSize(anc);
     --size_;
   }
 
@@ -170,9 +202,12 @@ class Treap {
       u->parent->right = w;
     }
     u->right = w->left;
-    if (u->right) u->right->parent = u;
+    if (u->right) 
+      u->right->parent = u;
     w->left = u;
     u->parent = w;
+    updateSize(u);
+    updateSize(w);
   }
 
   void rotateRight(Node* u) {
@@ -190,6 +225,8 @@ class Treap {
     if (u->left) u->left->parent = u;
     w->right = u;
     u->parent = w;
+    updateSize(u);
+    updateSize(w);
   }
 
   void bubbleUp(Node* u) {
