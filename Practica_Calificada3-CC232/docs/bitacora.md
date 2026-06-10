@@ -17,3 +17,7 @@ El *header* mencionado ya se creó en su totalidad con la función `kth()`, y so
 Se creó `demo_sol_pc3.cpp`, que contiene la implementación de `treap.h` aplicada al problema y la comparación de resultados del ejemplo 2 de AtCoder en su ejecución, sirviendo como muestra directa de su correctitud. También se creó `Solucion.cpp`, que es la implementación definitiva usando `treap.h`. Más adelante se busca detallar con rigurosidad los fundamentos tanto del *header* como de la solución dentro del repositorio.
 
 Por último, se actualizo el CMakeLists.
+
+## 09-06-2026
+
+Se completaron 12/20 preguntas de respuestas_obligatorias, avanzo readme y se creo test_treap.cpp que hará pruebas para el header ya que la solución es solamente un wrapper.
