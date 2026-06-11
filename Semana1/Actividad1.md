@@ -1,7 +1,5 @@
 ### ACTIVIDAD 1 - CC232 
-Integrantes:
--Santiago Alejandro Ramirez Aguilar
--Ronaldo David Sahuarico Canaquiri
+Santiago Alejandro Ramirez Aguilar
 
 ### BLOQUE1:
 . Problema: Es un enunciado que describe una tarea a resolver sin decir cómo resolverla.
