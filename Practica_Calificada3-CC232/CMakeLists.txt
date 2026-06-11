@@ -13,6 +13,15 @@ add_executable(demo_sol_ingenua demos/demo_sol_ingenua.cpp)
 # Ejecutable demo
 add_executable(demo_sol_pc3 demos/demo_sol_pc3.cpp)
 
+# Ejecutable Solucion Atcoder
+add_executable(pc3_solucion_atcoder src/Solucion_Atcoder.cpp)
+
+# Ejecutable Solucion
+add_executable(pc3_solucion src/Solucion.cpp)
+
+# Ejecutable test
+add_executable(test_treap tests/test_treap.cpp)
+
 # Registrar como tests
 enable_testing()
-add_test(NAME demo_pc3 COMMAND demo_sol_pc3)
+add_test(NAME test_treap COMMAND test_treap)

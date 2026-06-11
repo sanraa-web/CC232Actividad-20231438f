@@ -56,4 +56,11 @@ En general, la complejidad de cada operacion es O(log N), si se fuese a ejecutar
 
 ## Casos Borde
 
+Dentro de `test_treap.cpp` se evalua el header, no el `src` ya que la implementación es en realidad muy directa (solo llamar funciones con un if).
+
+- test_vacio_frontera ->      borde: árbol con 0 elementos
+- test_duplicados ->          borde: insertar el mismo valor mas de una vez
+- test_extremo_manual ->      borde: kth(1) y kth(size()) simultáneamente
+- test_invariante_subtreesize ->      borde: borrar raiz (5), mínimo (1) y máximo (9)
+
 ## Autoria

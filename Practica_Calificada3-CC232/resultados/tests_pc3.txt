@@ -1,0 +1,19 @@
+**Ejecución de test_treap.exe**
+
+Santiago@DESKTOP-CUO9D83 UCRT64 /c/Users/Santiago/Desktop/algos_estru/ACTUS/CC232Actividad-20231438f/Practica_Calificada3-CC232/build
+$ ./test_treap.exe 
+test_minimo
+test_vacio_frontera
+test_duplicados
+test_extremo_manual
+test_vs_ingenuo
+test_invariante_subtreesize
+Todos los tests pasaron
+
+**Explicación**
+test_minimo ->       un elemento, insert + kth + remove
+test_vacio_frontera ->       árbol vacío, size y empty consistentes
+test_duplicados ->           add retorna false en duplicados
+test_extremo_manual ->       5 elementos en desorden, verifica orden kth
+test_vs_ingenuo ->           compara contra vector+sort para 3 extracciones
+test_invariante_subtreesize -> subtreeSize coherente tras inserciones y borrados
