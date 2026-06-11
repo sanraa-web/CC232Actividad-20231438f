@@ -1,6 +1,5 @@
 **Creacion del build**
 
-Santiago@DESKTOP-CUO9D83 UCRT64 /c/Users/Santiago/Desktop/algos_estru/ACTUS/CC232Actividad-20231438f/Practica_Calificada3-CC232
 $ cmake -S . -B build
 cmake --build build
 ctest --test-dir build
@@ -17,22 +16,21 @@ ctest --test-dir build
 -- Check for working CXX compiler: C:/msys64/ucrt64/bin/c++.exe - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
--- Configuring done (3.1s)
+-- Configuring done (3.4s)
 -- Generating done (0.1s)
 -- Build files have been written to: C:/Users/Santiago/Desktop/algos_estru/ACTUS/CC232Actividad-20231438f/Practica_Calificada3-CC232/build
-[10/10] Linking CXX executable demo_sol_ingenua.exe
+[12/12] Linking CXX executable demo_sol_ingenua.exe
 Test project C:/Users/Santiago/Desktop/algos_estru/ACTUS/CC232Actividad-20231438f/Practica_Calificada3-CC232/build
     Start 1: test_treap
-1/1 Test #1: test_treap .......................   Passed    0.27 sec
+1/1 Test #1: test_treap .......................   Passed    0.32 sec
 
 100% tests passed, 0 tests failed out of 1
 
-Total Test time (real) =   0.28 sec
+Total Test time (real) =   0.33 sec
 
 
 **Correr demo_sol_pc3.exe**
 
-Santiago@DESKTOP-CUO9D83 UCRT64 /c/Users/Santiago/Desktop/algos_estru/ACTUS/CC232Actividad-20231438f/Practica_Calificada3-CC232/build
 $ ./demo_sol_pc3.exe 
 Ejm2 del Atcoder
 Obtenido:
@@ -42,3 +40,16 @@ Esperado:
 55277
 52403
 
+**Correr bench_treap.cpp**
+
+$ ./bench_treap.exe 
+Bench treap
+N = 1000 log2(N) = 9
+ insert (t) 548 us, 0.548 us/op,  (us/op)/log2N = 0.0608889
+ kth+remove (t) 437 us, 0.437 us/op,  (us/op)/log2N = 0.0485556
+N = 10000 log2(N) = 13
+ insert (t) 4853 us, 0.4853 us/op,  (us/op)/log2N = 0.0373308
+ kth+remove (t) 5577 us, 0.5577 us/op,  (us/op)/log2N = 0.0429
+N = 100000 log2(N) = 16
+ insert (t) 85652 us, 0.85652 us/op,  (us/op)/log2N = 0.0535325
+ kth+remove (t) 96089 us, 0.96089 us/op,  (us/op)/log2N = 0.0600556

@@ -22,10 +22,14 @@ Por último, se actualizo el CMakeLists.
 
 Se completaron 12/20 preguntas de respuestas_obligatorias, avanzo readme y se creo test_treap.cpp que hará pruebas para el header ya que la solución es solamente un wrapper.
 
-## 10 -06-2026
+## 10-06-2026
 
 Se agrego el .gitignore solo para `Practica_Calificada3-CC232`
 
 Se observo que el test_treap fallaba ya que `kth` no tenia un caso para k fuera de rango, se hizo la corrección en `treap.h`. Se agrego `Solucion_Atcoder.cpp` como enviable al juez virtual, el cual salio **aceptable**. Se actualizo el CMAKE y la carpeta `resultados/` con las salidas.
 
 Por ultimo, hay un avance en `bench_treap.cpp` la idea es que tener una lista de N elementos ordenados aleatoriamente y agregarlos en dicho orden al Treap, posterior a ello se ejecuta el `Treap.remove` hasta que quede vacio, luego comparar los tiempos y probar con eso que la complejidad es logarítmica.
+
+## 11-06-2026
+
+Se completo `benc_treap.cpp` tiene el obejtivo de demostrar la complejidad algoritmica del header. Se actualizo CMAKE, README, los archivos de `resultados/`.

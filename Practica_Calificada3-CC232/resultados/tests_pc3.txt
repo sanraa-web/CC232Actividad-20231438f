@@ -1,6 +1,5 @@
 **Ejecución de test_treap.exe**
 
-Santiago@DESKTOP-CUO9D83 UCRT64 /c/Users/Santiago/Desktop/algos_estru/ACTUS/CC232Actividad-20231438f/Practica_Calificada3-CC232/build
 $ ./test_treap.exe 
 test_minimo
 test_vacio_frontera

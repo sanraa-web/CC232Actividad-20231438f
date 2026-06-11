@@ -22,6 +22,9 @@ add_executable(pc3_solucion src/Solucion.cpp)
 # Ejecutable test
 add_executable(test_treap tests/test_treap.cpp)
 
+# Ejecutable benchmark
+add_executable(bench_treap benchmark/bench_treap.cpp)
+
 # Registrar como tests
 enable_testing()
 add_test(NAME test_treap COMMAND test_treap)

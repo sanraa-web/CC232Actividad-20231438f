@@ -4,16 +4,15 @@
 
 **Link**: <https://atcoder.jp/contests/arc033/tasks/arc033_3>
 
-**C - データ構造 (Data Structure / Estructura de Datos)**: El problema solicita administrar un conjunto dinámico de números (inicialmente vacío) que responda $Q$ consultas de dos tipos.
+**C - データ構造 (Data Structure / Estructura de Datos)**: Se solicita administrar un conjunto dinámico de números que responda $Q$ consultas de dos tipos.
 
-1. **Inserción ($T = 1$):** Agregar un número $X$ al conjunto.
-2. **Consulta y Eliminación ($T = 2$):** Identificar el $X$-ésimo número más pequeño presente en el conjunto, imprimirlo y luego eliminarlo.
+1. **Inserción ($T = 1$):** Agregar el número $X$.
+2. **Consulta y Eliminación ($T = 2$):** Identificar el X número más pequeño presente en el conjunto, imprimirlo y luego eliminarlo.
 
 **Restricciones clave:**
 
-1. Número de consultas y valores: $1 <= Q,X <= 200,000$.
-2. No se insertarán números repetidos que ya existan en el conjunto.
-3. Nunca se pedirá eliminar un elemento si no hay suficientes elementos disponibles.
+1. $1 <= Q,X <= 200,000$ $T = 1 ó T = 2$.
+2. No se pueden insertar números repetidos.
 
 ## Estructura Usada
 
@@ -35,18 +34,30 @@ ctest --test-dir build
 
 ## Ejecución
 
+```bash
+cd build/
+./demo_sol_pc3.exe
+./test_treap.exe
+./bench_treap.exe
+```
+
 ## Pruebas
+
+```bash
+cd build/
+./test_treap.exe
+```
 
 ## Complejidad
 
 | Operación | Complejidad esperada |
 | --- | --- |
-| `add(X)` | O(log N) |
-| `kth(k)` | O(log N) |
-| `remove(val)` | O(log N) |
-| Operación tipo 2 completa (`kth` + `remove`) | O(log N) |
+| `add(X)` | $O(\log N)$ |
+| `kth(k)` | $O(\log N)$ |
+| `remove(val)` | $O(\log N)$ |
+| Operación tipo 2 completa (`kth` + `remove`) | $O(\log N)$ |
 
-En general, la complejidad de cada operacion es O(log N), si se fuese a ejecutar Q veces y dado que $Q <= N$ sería: **$O(Q) * O(log Q) = O(Qlog(Q))$**
+En general, la complejidad de cada operacion es $O(\log N)$, si se fuese a ejecutar Q veces y dado que $Q <= N$ sería: **$$O(Q) * O(log Q) = O(Q\log(Q))$$**
 
 ## Invariante
 
@@ -58,9 +69,28 @@ En general, la complejidad de cada operacion es O(log N), si se fuese a ejecutar
 
 Dentro de `test_treap.cpp` se evalua el header, no el `src` ya que la implementación es en realidad muy directa (solo llamar funciones con un if).
 
-- test_vacio_frontera ->      borde: árbol con 0 elementos
-- test_duplicados ->          borde: insertar el mismo valor mas de una vez
-- test_extremo_manual ->      borde: kth(1) y kth(size()) simultáneamente
-- test_invariante_subtreesize ->      borde: borrar raiz (5), mínimo (1) y máximo (9)
+- test_vacio_frontera ->      árbol con 0 elementos
+- test_duplicados ->          insertar el mismo valor mas de una vez
+- test_extremo_manual ->      kth(1) y kth(size()) simultáneamente
+- test_invariante_subtreesize ->      borrar raiz (5), mínimo (1) y máximo (9)
+
+## Benchmark
+
+En `benchmark/bench_treap.cpp` se verifica experimentalmente que las funciones de `treap.h` tienen complejidad temporal $O(\log N)$. Para ello, se definió $T(N)$:
+
+$$
+T(N)=\frac{t_{\text{ejecución}}}{N}.
+$$
+
+Posteriormente, se analiza el cociente:
+
+$$
+\frac{T(N)}{\log_2(N)}.
+$$
+
+Si el cociente se mantiene aproximadamente constante para cualquier valor de $N$, se corrobora dicha complejidad. Se utilizan logaritmos en base 2 porque, en un BST, la altura del árbol es proporcional al logaritmo mencionado. Además, la notación Big-O sigue siendo la misma, ya que las distintas bases difieren únicamente en una constante multiplicativa ($\log_2(N)=c,\log(N)$). Por lo tanto, asintóticamente, la expresión $O(\log N)$ es correcta.
 
 ## Autoria
+
+Declaro que entiendo el código entregado, que puedo explicarlo, compilarlo, ejecutarlo y modificarlo sin ayuda externa durante la grabación.
+También declaro que el repositorio entregado corresponde al trabajo mostrado en el video y que no contiene builds, ejecutables ni archivos generados usados para aparentar funcionamiento.
