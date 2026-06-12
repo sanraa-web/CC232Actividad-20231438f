@@ -77,3 +77,15 @@ Los elementos repetidos no son admitidos dentro de la estructura. Durante la ins
 | Operación tipo 2 completa (`kth` + `remove`) | O(log N) |
 
 Estas cotas se sostienen porque la aleatorización de prioridades permite que la altura del Treap permanezca logarítmica en expectativa.
+
+## R1. ¿Cómo se encuentra el k-ésimo usando tamaños de subárbol?
+
+Se compara el parametro `subtreeSize`, cuenta la cantidad de elementos que tienen sus subarboles adicional a contarse a si mismo.
+
+## R2. ¿Dónde se actualiza size?
+
+Se utiliza la utilidad `updateSize`, las funciones que la requieren son `addNote`, `splice` y `rotateLeft / rotateRight`. La función `updateSize` es la suma del tamaño del size en el hijo izquierdo, el derecho y 1.
+
+## R3. ¿Qué pasa si el árbol se vuelve degenerado?
+
+Si el árbol se degenera, es decir, cuando el tamaño de los subárboles no está correctamente balanceado y el árbol adopta la forma de una lista enlazada, la altura deja de cumplir la complejidad esperada $O(\log N)$. En consecuencia, las operaciones pasan a tener un costo $O(N)$, elevando la complejidad temporal del problema a $O(Q \cdot N)$, con el riesgo de producir TLE.

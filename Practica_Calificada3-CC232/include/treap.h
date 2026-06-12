@@ -5,6 +5,7 @@
 #include <random>
 #include <stdexcept>
 #include <utility>
+#include <iostream>
 
 namespace ods {
 
@@ -98,6 +99,13 @@ class Treap {
       }
     }
     throw std::out_of_range("kth: k fuera de rango");
+  }
+
+  // Reto modificacion: Agregar una función que imprima inorder con size de cada nodo.
+  void inorder() const {
+    std::cout << "[ ";
+    inorderPrint(root_);
+    std::cout << "]\n";
   }
 
  private:
@@ -261,6 +269,15 @@ class Treap {
     destroy(u->left);
     destroy(u->right);
     delete u;
+  }
+
+  // Reto modificacion
+  static void inorderPrint(const Node* u) {
+    if (!u) return;
+    // izq -> root -> der
+    inorderPrint(u->left);
+    std::cout << u->key << "(" << u->subtreeSize << ") ";
+    inorderPrint(u->right);
   }
 };
 

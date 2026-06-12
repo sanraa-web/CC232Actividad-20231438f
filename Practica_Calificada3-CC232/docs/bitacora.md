@@ -33,3 +33,5 @@ Por ultimo, hay un avance en `bench_treap.cpp` la idea es que tener una lista de
 ## 11-06-2026
 
 Se completo `benc_treap.cpp` tiene el obejtivo de demostrar la complejidad algoritmica del header. Se actualizo CMAKE, README, los archivos de `resultados/`.
+
+Se hizo cambio en `treap.h` y `demo_sol_pc3.cpp` por el video reto. Además, se actualizo el readme y `ejecucion_pc3.txt`

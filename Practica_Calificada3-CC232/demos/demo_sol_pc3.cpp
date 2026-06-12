@@ -19,6 +19,7 @@ std::vector<int> runCase(const std::string& input) {
             output.push_back(val);
             treap.remove(val);
         }
+        treap.inorder();
     }
     return output;
 }

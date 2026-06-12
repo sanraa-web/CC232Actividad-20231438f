@@ -57,7 +57,7 @@ cd build/
 | `remove(val)` | $O(\log N)$ |
 | Operación tipo 2 completa (`kth` + `remove`) | $O(\log N)$ |
 
-En general, la complejidad de cada operacion es $O(\log N)$, si se fuese a ejecutar Q veces y dado que $Q <= N$ sería: **$$O(Q) * O(log Q) = O(Q\log(Q))$$**
+Siendo N vale la cantidad de elementos dentro de la estructura, la complejidad de cada operacion es $O(\log N)$, si se fuese a ejecutar Q veces y se tiene $N <= Q$ sería: **$$O(Q) * O(\log N) = O(Q\log(N))$$**
 
 ## Invariante
 
