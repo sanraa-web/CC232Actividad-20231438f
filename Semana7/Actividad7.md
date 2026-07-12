@@ -446,11 +446,41 @@ Total Test time (real) =   0.08 sec
 
 #### Bloque 9 - Cierre comparativo
 
-[Respuesta final]
+### Degeneracion lineal del BST
+ 
+Un BST comun no tiene ninguna proteccion estructural: si las claves llegan en orden, degenera en una cadena y su altura pasa de log n a n, como se vio con la secuencia 10 a 70.
+ 
+### Rotaciones y preservacion del inorder
+ 
+AVL y Red Black Tree corrigen esto usando rotaciones, que reorganizan los enlaces entre nodos sin mover claves fuera de su posicion relativa, por lo que el inorder antes y despues de rotar es siempre el mismo.
+ 
+### Balance por altura en AVL
+ 
+AVL logra su balance midiendo la altura exacta de cada nodo y exigiendo que la diferencia entre sus dos subarboles nunca supere uno, lo cual da la cota de altura mas ajustada de las cuatro estructuras.
+ 
+### Balance por colores en Red Black Tree
+ 
+Red Black Tree no mide altura sino que usa colores, exigiendo raiz negra, ningun rojo con hijo rojo, y la misma cantidad de negros en todo camino, una regla mas laxa que produce una altura hasta el doble que la de AVL.
+ 
+### Balance estricto contra balance flexible
+ 
+Esa diferencia resume el contraste entre balance estricto, como en AVL, que prioriza la altura minima a costa de mas rotaciones, y balance flexible, como en Red Black, que tolera mas desbalance y resuelve mas casos con recoloreo barato, util cuando hay muchas inserciones y eliminaciones.
+ 
+### Costo de busqueda, insercion y eliminacion
+ 
+En ambos casos el costo queda garantizado en O(log n) para busqueda, insercion y eliminacion en el peor caso, ya no solo en promedio, que era lo unico que ofrecian BST en Semana 5 o Treap en Semana 6.
+ 
+### Continuidad con Semana 5 y Semana 6
+ 
+Semana 5 mostro el problema de degeneracion, Semana 6 lo ataco con aleatoriedad y balance esperado, y Semana 7 lo resuelve con invariantes deterministas y balance garantizado.
+ 
+### Evidencia para defender correctitud
+ 
+El argumento mas fuerte combina cuatro fuentes: los invariantes explicitos, como `isAVLValid` o `verifyRB`, que definen que se debe cumplir; el analisis de complejidad, que explica por que deberia funcionar; el trazado paso a paso, que muestra un caso concreto de rotacion o recoloreo; y las pruebas automatizadas, en particular la interna con 250 inserciones y 120 eliminaciones aleatorias contra un oraculo, que confirma los invariantes en muchos casos no elegidos a mano y es la evidencia mas dificil de simular o forzar artificialmente.
 
 #### Autoevaluación breve
 
-- Qué puedo defender con seguridad: 
-- Qué todavía confundo: 
-- Qué evidencia usaría en una sustentación: 
-- Qué parte del código debo revisar otra vez: 
+- Qué puedo defender con seguridad: Qué puedo defender con seguridad: que AVL y Red Black Tree garantizan O(log n) en el peor caso porque sus invariantes de altura o color impiden la degeneración lineal del BST.
+- Qué todavía confundo: Qué todavía confundo: los casos exactos de recoloreo contra rotación dentro de `addFixup` y `removeFixup` de Red Black Tree.
+- Qué evidencia usaría en una sustentación: Qué evidencia usaría en una sustentación: la prueba interna con 250 inserciones y 120 eliminaciones aleatorias contra un oráculo `std::set`.
+- Qué parte del código debo revisar otra vez: Qué parte del código debo revisar otra vez: `removeFixup` y sus tres casos en `RedBlackTree.h`.
