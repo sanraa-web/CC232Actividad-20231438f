@@ -6,7 +6,72 @@
 
 #### Bloque 1 - Diagnóstico inicial
 
-[Tabla de comandos, resultados e interpretación]
+### 1. Targets de demostracion para Semana 7
+ 
+```text
+sem7_demo_avl_deng_core
+sem7_demo_avl_compact_rotations
+sem7_demo_bst_deng_vs_avl
+sem7_demo_redblack_morin
+sem7_demo_redblack_llrb
+sem7_demo_compare_avl_vs_redblack
+sem7_demo_compare_with_semana5
+sem7_demo_capitulo7_panorama
+```
+ 
+### 2. Pruebas publicas e internas
+ 
+`sem7_test_public`, compilado desde `pruebas_publicas/test_public_week7.cpp`, en ctest como `semana7_public`.
+ 
+`sem7_test_internal`, compilado desde `pruebas_internas/test_internal_week7.cpp`, en ctest como `semana7_internal`.
+ 
+### 3. Archivos que incluye Capitulo7.h
+ 
+```cpp
+#include "Entry.h"
+#include "BinNode.h"
+#include "BinTree.h"
+#include "BST.h"
+#include "AVL.h"
+#include "BinaryTree.h"
+#include "BinarySearchTree.h"
+#include "RedBlackTree.h"
+#include "AVLTreeCompact.h"
+#include "RedBlackTreeLLRB.h"
+```
+ 
+### 4. Relacion conceptual entre Semana 5, 6 y 7
+ 
+Semana 5 aporta arboles binarios, BST y recorrdos. Semana 6 aporta colas de prioridad, heaps, Huffman y Treap. Semana 7 usa esa base para estudiar AVL y Red Black Tree, dos formas de evitar la degeneracion lineal del BST con invariantes adicionales de altura o de color, ambas apoyadas en rotaciones que conservan el inorder.
+ 
+### 5. Por que una carpeta no hereda de otra carpeta
+ 
+Herencia es una relacion entre clases del lenguaje C++, no entre unidades de organizacion de archivos. Una carpeta solo agrupa headers; no tiene tipos ni metodos que puedan heredarse. El propio README lo aclara: no se debe decir que Semana7 hereda de Semana5 o Semana6, sino que la continua y reutiliza sus ideas de diseno.
+ 
+### 6. Clases que si usan herencia
+ 
+```cpp
+AVL<T, Compare> : public BST<T, Compare>
+RedBlackTree<Node, T> : public BinarySearchTree<Node, T>
+```
+ 
+Tambien las clases concretas mas simples heredan de sus plantillas: `BSTNode1<T>` de `BSTNode<Node, T>`, `RedBlackNode1<T>` de `RedBlackNode<Node, T>`, y `RedBlackTree1<T>` de `RedBlackTree<Node, T, Compare>`.
+ 
+### 7. Evidencia obtenida al ejecutar las pruebas
+ 
+Esta vez la configuracion, compilacion y ejecucion se completaron sin errores, se usó Ninja y GNU 15.2.0 en Windows y ambos ctest pasaron.
+ 
+### Tabla de comandos
+ 
+| Comando | Resultado | Error | Interpretacion |
+|---|---|---|---|
+| `cmake -S . -B build-debug -DCMAKE_BUILD_TYPE=Debug` | Configuracion exitosa | Ninguno | El proyecto encontro el compilador y genero los archivos de build sin problema |
+| `cmake --build build-debug` | Compilacion exitosa, 20 targets | Ninguno | Todos los demos y pruebas de Semana 7 compilaron, a diferencia del intento anterior donde faltaban headers |
+| `ctest --test-dir build-debug -R semana7 --output-on-failure` | 2 de 2 pruebas pasaron | Ninguno | `semana7_public` y `semana7_internal` corrieron sin ningun assert fallido, confirmando los invariantes de AVL y Red Black Tree en los casos probados |
+ 
+### Archivos de Semana 7 revisados en toda la conversacion
+ 
+Lectura11-Deng.md, Lectura12-Morin.md, Lectura13-Morin.md; dentro de include/: Capitulo7, BinNode, BST, AVL, BinaryTree, BinarySearchTree, RedBlackTree, AVLTreeCompact; dentro de demos/: test_public_week7, test_internal_week7, demo_avl_deng_core, demo_avl_compact_rotations, demo_bst_deng_vs_avl, demo_redblack_morin, demo_compare_avl_vs_redblack, demo_compare_with_semana5, demo_capitulo7_panorama; README.md, CMakeLists.txt
 
 #### Bloque 2 - BST como punto de partida
 
